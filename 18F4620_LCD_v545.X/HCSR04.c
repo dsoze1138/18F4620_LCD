@@ -32,6 +32,9 @@
  *    LCD_D5 <> 20 : RD1               RD2 : 21 <> LCD_D6
  *                 +-----------------------:
  *                          DIP-40
+ *
+ * See:
+ *      https://www.mpja.com/download/hc-sr04_ultrasonic_module_user_guidejohn.pdf
  */
 
 #include "mcc_generated_files/mcc.h"
@@ -129,7 +132,7 @@ void HCSR04_StartDemo(void)
             Distance = TimeOfFlight; /* units are 1us per count */
             Distance *= 343;         /* speed of sound in air, units micrometers per microsecond */
             Distance += 1;           /* round up */
-            Distance /= 2;           //* convert time of flight to distance in micrometers */
+            Distance /= 2;           /* convert time of flight to distance in micrometers */
             LCD_SetPosition(LINE_TWO);
             printf("%1.2f meters",(float)(Distance)/1E6);
             HCSR04_State = eIdle;
